@@ -3,9 +3,48 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src='http://static.opentok.com/v2/js/opentok.js'></script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div>
+      <a href="https://addons.mozilla.org/firefox/downloads/file/495463/screen_sharing_extension-0.0.1-fx+an.xpi"
+        hash="sha1:dcc9fa0eee167357d07778f21dc914e0d27dae08"
+        onclick="return install(event);">
+        Install Firefox Extension!
+      </a>
+    </div>
+    <button onclick="ffScreen()">
+      Start FF Screensharing
+    </button>
+    <div id="screen-preview"></div>
   </body>
+  <script>
+  ffScreen();
+
+  function ffScreen () {
+    OT.checkScreenSharingCapability(function(response) {
+      if (response.extensionInstalled === false) {
+        // Prompt to install the extension by showing the button.
+        alert('Extension is not installed! Please click the install link on the page.');
+      } else {
+        // Screen sharing is available. Create the screen publisher.
+        // This doesn't actually send video data into the session just yet.
+        var publisher = OT.initPublisher('screen-preview', {videoSource: 'screen'});
+      }
+    });
+  }
+
+  function install (aEvent) {
+    for (var a = aEvent.target; a.href === undefined;) a = a.parentNode;
+    var params = {
+      "Firefox Screensharing Extension": { URL: aEvent.target.href,
+               Hash: aEvent.target.getAttribute("hash"),
+               toString: function () { return this.URL; }
+      }
+    };
+    InstallTrigger.install(params);
+
+    return false;
+  }
+  </script>
 </html>
