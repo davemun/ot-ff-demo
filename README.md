@@ -22,3 +22,6 @@ Edit `id` in [package.json](./build-extension/package.json#L2) to be a unique st
 Publish the resulting `xpi` file (which is output into [build-extension](./build-extension)) to the [Firefox submissions page](https://addons.mozilla.org/en-US/developers/addon/submit/) to be signed and be universally accessible to your users.
 
 In the install parameters of [index.ejs](./views/index.ejs#L11-12), edit the `href` and `hash` properties to contain the link and hash to your newly published extension.
+
+## Honorable Mention
+v2 of the OpenTok Firefox screensharing extension will always return `extensionInstalled: false` if you load your app over HTTP. This is intentional as screensharing is not allowed by all browsers in HTTP. Please load your app over HTTPS instead.
