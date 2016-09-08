@@ -4,7 +4,7 @@
 You can view the documentation and code here: [OpenTok Screensharing](https://github.com/opentok/screensharing-extensions)
 
 ## View the sample deployment
-Navigate to the [live deployment](https://ot-ff-demo.herokapp.com).
+Navigate to the [live deployment](https://ot-ff-demo.herokuapp.com).
 
 ## How to develop and start this locally
 `npm install`
