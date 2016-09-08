@@ -19,8 +19,6 @@
     <div id="screen-preview"></div>
   </body>
   <script>
-  ffScreen();
-
   function ffScreen () {
     OT.checkScreenSharingCapability(function(response) {
       if (response.extensionInstalled === false) {
